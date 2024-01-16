@@ -8,5 +8,10 @@
   ],
   "require": {
     "symplify/easy-coding-standard": "12.0.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "NetInventors\\EcsSetList\\": "src/"
+    }
   }
 }
