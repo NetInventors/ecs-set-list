@@ -1,0 +1,12 @@
+{
+  "name": "netinventors/ecs-set-list",
+  "authors": [
+    {
+      "name": "Net Inventors GmbH",
+      "email": "info@netinventors.de"
+    }
+  ],
+  "require": {
+    "symplify/easy-coding-standard": "12.0.*"
+  }
+}
