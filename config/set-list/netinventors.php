@@ -24,7 +24,7 @@ use PhpCsFixerCustomFixers\Fixer\NoUselessParenthesisFixer;
 use PhpCsFixerCustomFixers\Fixer\NoUselessStrlenFixer;
 use PhpCsFixerCustomFixers\Fixer\PhpdocParamTypeFixer;
 use PhpCsFixerCustomFixers\Fixer\PhpdocSelfAccessorFixer;
-use PhpCsFixerCustomFixers\Fixer\PhpdocSingleLineVarFixer;
+// use PhpCsFixerCustomFixers\Fixer\PhpdocSingleLineVarFixer;
 use PhpCsFixerCustomFixers\Fixer\PhpdocTypeListFixer;
 use PhpCsFixerCustomFixers\Fixer\PhpdocTypesCommaSpacesFixer;
 use PhpCsFixerCustomFixers\Fixer\PhpdocTypesTrimFixer;
@@ -119,7 +119,7 @@ return static function (ECSConfig $config): void {
     $config->rule(PhpdocParamOrderFixer::class);
     $config->rule(PhpdocParamTypeFixer::class);
     $config->rule(PhpdocSelfAccessorFixer::class);
-    $config->rule(PhpdocSingleLineVarFixer::class);
+    // $config->rule(PhpdocSingleLineVarFixer::class);
     $config->rule(PhpdocTypeListFixer::class);
     $config->rule(PhpdocTypesCommaSpacesFixer::class);
     $config->rule(PhpdocTypesTrimFixer::class);
