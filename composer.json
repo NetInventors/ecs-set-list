@@ -8,7 +8,7 @@
   ],
   "require": {
     "kubawerlos/php-cs-fixer-custom-fixers": "^v3.19.0",
-    "symplify/easy-coding-standard": "12.0.*"
+    "symplify/easy-coding-standard": "^12.1.8"
   },
   "autoload": {
     "psr-4": {
