@@ -7,6 +7,7 @@ use PhpCsFixer\Fixer\ControlStructure\TrailingCommaInMultilineFixer;
 use PhpCsFixer\Fixer\ControlStructure\YodaStyleFixer;
 use PhpCsFixer\Fixer\FunctionNotation\MethodArgumentSpaceFixer;
 use PhpCsFixer\Fixer\Import\OrderedImportsFixer;
+use PhpCsFixer\Fixer\LanguageConstruct\NullableTypeDeclarationFixer;
 use PhpCsFixer\Fixer\Operator\BinaryOperatorSpacesFixer;
 use PhpCsFixer\Fixer\Operator\NotOperatorWithSuccessorSpaceFixer;
 use PhpCsFixer\Fixer\Phpdoc\PhpdocParamOrderFixer;
@@ -94,6 +95,13 @@ return static function (ECSConfig $config): void {
         MultilinePromotedPropertiesFixer::class,
         [
             'keep_blank_lines' => true,
+        ],
+    );
+
+    $config->ruleWithConfiguration(
+        NullableTypeDeclarationFixer::class,
+        [
+            'syntax' => 'union',
         ],
     );
 
