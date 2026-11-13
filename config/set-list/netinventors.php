@@ -11,7 +11,11 @@ use PhpCsFixer\Fixer\LanguageConstruct\NullableTypeDeclarationFixer;
 use PhpCsFixer\Fixer\Operator\BinaryOperatorSpacesFixer;
 use PhpCsFixer\Fixer\Operator\NotOperatorWithSuccessorSpaceFixer;
 use PhpCsFixer\Fixer\Phpdoc\PhpdocParamOrderFixer;
+use PhpCsFixer\Fixer\Strict\DeclareStrictTypesFixer;
+use PhpCsFixer\Fixer\Strict\StrictComparisonFixer;
+use PhpCsFixer\Fixer\Strict\StrictParamFixer;
 use PhpCsFixer\Fixer\Whitespace\TypeDeclarationSpacesFixer;
+use PhpCsFixer\Fixer\Whitespace\TypesSpacesFixer;
 use PhpCsFixerCustomFixers\Fixer\CommentSurroundedBySpacesFixer;
 use PhpCsFixerCustomFixers\Fixer\MultilineCommentOpeningClosingAloneFixer;
 use PhpCsFixerCustomFixers\Fixer\MultilinePromotedPropertiesFixer;
@@ -30,6 +34,7 @@ use PhpCsFixerCustomFixers\Fixer\PhpdocTypeListFixer;
 use PhpCsFixerCustomFixers\Fixer\PhpdocTypesCommaSpacesFixer;
 use PhpCsFixerCustomFixers\Fixer\PhpdocTypesTrimFixer;
 use PhpCsFixerCustomFixers\Fixer\StringableInterfaceFixer;
+use Symplify\CodingStandard\Fixer\Spacing\SpaceAfterCommaHereNowDocFixer;
 use Symplify\EasyCodingStandard\Config\ECSConfig;
 use Symplify\EasyCodingStandard\ValueObject\Set\SetList;
 
@@ -38,7 +43,13 @@ return static function (ECSConfig $config): void {
         SetList::PSR_12,
         SetList::NAMESPACES,
         SetList::SPACES,
-        SetList::STRICT,
+    ]);
+
+    // Formerly SetList::STRICT, which ECS 13 removed
+    $config->rules([
+        DeclareStrictTypesFixer::class,
+        StrictComparisonFixer::class,
+        StrictParamFixer::class,
     ]);
 
     $config->ruleWithConfiguration(
@@ -136,5 +147,10 @@ return static function (ECSConfig $config): void {
 
     $config->skip([
         NotOperatorWithSuccessorSpaceFixer::class,
+        // ECS 13 added these to the SPACES set. Both would change code that is fine since PHP 7.3 / readable as is:
+        // a comma after a heredoc closing marker would be moved to its own line, and the spaces around "|" of
+        // multiline union types would be removed.
+        SpaceAfterCommaHereNowDocFixer::class,
+        TypesSpacesFixer::class,
     ]);
 };
